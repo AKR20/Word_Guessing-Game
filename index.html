@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Word Guessing Game</title>
+    <title>Guess the word</title>
     <style>
-      /* Add your CSS here */
       body   {
         background-image: url('https://www.hitbullseye.com/images/school.svg');
       }
@@ -63,14 +62,15 @@ document.getElementById("submit").addEventListener("click", function() {
     return;
   }
   if (usedLetters.includes(guess)) {
-    document.getElementById("message").innerHTML = "You already used that letter. Try another one.";
+    document.getElementById("message").innerHTML = "You already used that letter. Try another one." + "<br>" +"<br>" + "Used words are: " + usedLetters;
     return;
   }
   usedLetters.push(guess);
   if (!word.includes(guess)) {
     tries--;
     document.getElementById("tries").innerHTML = tries;
-    document.getElementById("message").innerHTML = "Wrong! Try again.";
+    document.getElementById("message").innerHTML = "Wrong! Try again." + "<br>" + "<br>" + "Used words are: " + usedLetters;
+    
   } else {
     let wordArray = Array.from(word);
     for (let i = 0; i < wordArray.length; i++) {
@@ -80,7 +80,7 @@ document.getElementById("submit").addEventListener("click", function() {
         document.getElementById("word").innerHTML = wordString.join(" ");
       }
     }
-    document.getElementById("message").innerHTML = "Correct!";
+    document.getElementById("message").innerHTML = "Correct!" + "<br>" +"<br>" + "Used words are: " + usedLetters;
   }
   if (!document.getElementById("word").innerHTML.includes("_")) {
     document.getElementById("message").innerHTML = "You win! The word was " + word + ". Play again?";
